@@ -1,24 +1,44 @@
+header {
+	border-bottom: 1px solid black;
+}
+
 h1 {
 	text-align: center;
 
 }
 
-#gameBoard {
-	margin: 0 auto;
-	width: 150px;
-	height: 150px;
-	background-color: gray;
-	border: 3px solid lime;
+#leftSidebar {
+	float: left;
+	width: 250px;
+	min-height: 400px;
+	border-right: 1px solid black;
+	height: 100%;
 
 }
-#test {
-	margin: 0 auto;
-	width: 150px;
-	height: 150px;
-	background-color: gray;
-	border: 3px solid lime;
+
+#rightSidebar {
 	float: right;
-	display: inline-block;
-	vertical-align: middle;
-	position: absolute;
+	width: 250px;
+	min-height: 400px;
+	border-left: 1px solid black;
+	height: 100%
 }
+
+table {
+	margin: 0 auto;
+}
+
+td {
+	border: 1px solid black;
+	height: 150px;
+	width: 150px;
+
+}
+
+#startbtn {
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
