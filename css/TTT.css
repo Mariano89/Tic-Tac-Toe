@@ -26,12 +26,19 @@ h1 {
 
 table {
 	margin: 0 auto;
+	margin-top: 35px;
+	border-collapse: collapse;
+}
+
+td:hover {
+	background-color: #7f766a;
 }
 
 td {
 	border: 1px solid black;
 	height: 150px;
 	width: 150px;
+
 
 }
 
@@ -41,4 +48,3 @@ td {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
