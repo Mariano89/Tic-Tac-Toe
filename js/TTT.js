@@ -14,5 +14,4 @@ $scope.tiles = [
 		alert("CLICK!!");
 	};
 	
-
 }]);
