@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="TicTacToeApp">
+<html lang="en" ng-app="tttApp">
 	<head>
 		<title>TicTacToe</title>
 		<meta charset="UTF-8">
@@ -10,22 +10,33 @@
     	<!-- AngularFire -->
     	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
 		<link href="css/TTT.css" rel="stylesheet" type="text/css">
-		<script src="js/TTT.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+		<script src="js/tttController.js" type="text/javascript"></script>
 		
 	</head>
 	<body x-ng-controller="TTTController as ttt">
 		<header><h1>Tic-Tac-Toe</h1></header>
 		
 		<div id="leftSidebar">
-			<h2>Player 1</h2><br/>
-			<h2>Player 2</h2>
+			<h4>Player one:</h4>
+			<h2 x-ng-bind="p1name" class="p1name"></h2><br/><input type="text" placeholder="Enter your name" x-ng-model="p1name">
+			<h4>Player two:</h4>
+			<h2 x-ng-bind="p2name" class="p2name"></h2><br/><input type="text" placeholder="Enter your name" x-ng-model="p2name">
 		</div>
 		<div id="rightSidebar"></div>
-		<table>
-    		<tr x-ng-repeat="board in tiles">
-        		<td x-ng-repeat="tile in board" x-ng-click="click()"></td>      		
-    		</tr>   		
-		</table>
+		
+		<!-- Game board and functionality -->
+    	
+
+    		<div class="board">
+    			<div x-ng-repeat="tile in ttt.tiles">
+        			<div class="tiles" x-ng-click="tile.click()">
+        				<!-- {{tile.position}} -->
+        				<h1 class="symbols">{{tile.players}}</h1>
+        			</div>
+        		</div>
+    		</div>   		
+		
 		<button id="startbtn">Start Game</button>
 
 	</body>
