@@ -18,26 +18,33 @@
 		<header><h1>Tic-Tac-Toe</h1></header>
 		
 		<div id="leftSidebar">
-			<h4>Player one:</h4>
-			<h2 x-ng-bind="p1name" class="p1name"></h2><br/><input type="text" placeholder="Enter your name" x-ng-model="p1name">
-			<h4>Player two:</h4>
-			<h2 x-ng-bind="p2name" class="p2name"></h2><br/><input type="text" placeholder="Enter your name" x-ng-model="p2name">
+			
+			<h4>Player one: {{ ttt.playerOne.wins }}</h4>
+			
+			<h2 x-ng-bind="p1name" class="p1name"></h2><br/>
+				<input type="text" placeholder="Enter your name" x-ng-model="p1name">
+			
+			<h4>Player two: {{ ttt.playerTwo.wins }} </h4>
+			
+			<h2 x-ng-bind="p2name" class="p2name"></h2><br/>
+				<input type="text" placeholder="Enter your name" x-ng-model="p2name">
+
+			<h4>Ties: </h4>
+		
 		</div>
 		<div id="rightSidebar"></div>
 		
 		<!-- Game board and functionality -->
     	
-
     		<div class="board">
     			<div x-ng-repeat="tile in ttt.tiles">
         			<div class="tiles" x-ng-click="tile.click()">
-        				<!-- {{tile.position}} -->
         				<h1 class="symbols">{{tile.players}}</h1>
         			</div>
         		</div>
     		</div>   		
 		
-		<button id="startbtn">Start Game</button>
-
+		<!-- <button x-ng-click="newGame.click()" class="startbtn">New Game</button>
+ -->
 	</body>
 </html>
