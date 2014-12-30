@@ -12,10 +12,12 @@ function TTTController($firebase) {
 	self.playersTie = false;
 	self.tiles = [];
 	self.currentTurn = "X";
+	self.players.ties = 0;
 
 	function Player(name) {
 		this.name = name;
 		this.wins = 0;
+		
 	}
 
 	self.playerOne = new Player("Playe One");
@@ -40,7 +42,7 @@ function TTTController($firebase) {
 
     	this.click = function() {
 
-     	// click tiles
+     	// ********* click tiles **********
      	if(this.players === ''){
      		if(self.currentTurn == "X"){
      			this.players = "X";
@@ -61,7 +63,7 @@ function TTTController($firebase) {
 
      };
  }
-	     // new game clears tiles
+	     // ******* new game clears tiles ********
 	function newGame() {
 		for(var i = 0; i < 9; i++){
 			self.tiles[i].players = '';
@@ -77,6 +79,7 @@ function TTTController($firebase) {
 			}
 		} 
 			if (check > 8){
+				self.players.ties++;
 				newGame();
 			 alert("Tie");
 		}
@@ -88,7 +91,7 @@ function TTTController($firebase) {
 
 
 	function p1WinCheck() {
-		if((self.tiles[0].players == 'X' && self.tiles[1].players == "X" && self.tiles[2].players == "X") ||
+		if((self.tiles[0].players == "X" && self.tiles[1].players == "X" && self.tiles[2].players == "X") ||
 			(self.tiles[3].players == "X" && self.tiles[4].players == "X" && self.tiles[5].players == "X") ||
 			(self.tiles[6].players == "X" && self.tiles[7].players == "X" && self.tiles[8].players == "X") ||
 			(self.tiles[0].players == "X" && self.tiles[3].players == "X" && self.tiles[6].players == "X") ||
@@ -107,7 +110,7 @@ function TTTController($firebase) {
 }
 
 	function p2WinCheck() {
-		if((self.tiles[0].players == 'O' && self.tiles[1].players == "O" && self.tiles[2].players == "O") ||
+		if((self.tiles[0].players == "O" && self.tiles[1].players == "O" && self.tiles[2].players == "O") ||
 			(self.tiles[3].players == "O" && self.tiles[4].players == "O" && self.tiles[5].players == "O") ||
 			(self.tiles[6].players == "O" && self.tiles[7].players == "O" && self.tiles[8].players == "O") ||
 			(self.tiles[0].players == "O" && self.tiles[3].players == "O" && self.tiles[6].players == "O") ||
