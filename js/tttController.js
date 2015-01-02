@@ -9,27 +9,35 @@ function TTTController($firebase) {
 	self.players = [ 'X', 'O' ];
 	self.playerOneWon = false;
 	self.playerTwoWon = false;
-	self.playersTie = false;
+	self.playerOne = new Player("Playe One");
+	self.playerTwo = new Player("Player Two");
+	//self.playersTie = false;
 	self.tiles = [];
 	self.currentTurn = "X";
 	self.players.ties = 0;
+	self.marianottt = marianottt();
+
+
+		// ************** Connection to Firebase ************
+	function marianottt(){
+		var ref = new Firebase('https://marianottt.firebaseio.com/');
+		var mttt = $firebase(ref).$asObject();
+		console.log(mttt);
+		return mttt;
+	}
+
 
 	function Player(name) {
 		this.name = name;
 		this.wins = 0;
-		
 	}
 
-	self.playerOne = new Player("Playe One");
-	self.playerTwo = new Player("Player Two");
 
-
-	        // ARRAY
+	      // ********** Array Constructor ***********
     (function tilePusher(){
     	for(var i = 0; i < 9; i++){
     		self.tiles.push(new tile(i));
-
-    	}
+    	}	self.marianottt.$save();
     })();
 
 
@@ -40,34 +48,36 @@ function TTTController($firebase) {
     	this.playerOne = false;
     	this.playerTwo = false;
 
+
+			// ********* Click Tiles **********
     	this.click = function() {
 
-     	// ********* click tiles **********
-     	if(this.players === ''){
-     		if(self.currentTurn == "X"){
-     			this.players = "X";
-     			p1WinCheck();
-     			if (self.playerOneWon === false){
-     			tieCheck();
-     		}
-     			return self.currentTurn = "O";
-     		} else if (self.currentTurn == "O"){
-     			this.players = "O";
-     			p2WinCheck();
-     			if (self.playerTwoWon === false){
-     			tieCheck();
-     		}
-     			return self.currentTurn = "X";
-     		}
-     	}
+	     	if(this.players === ''){
+	     		if(self.currentTurn == "X"){
+	     			this.players = "X";
+	     			p1WinCheck();
+	     			if (self.playerOneWon === false){
+	     			tieCheck();
+	     		}
+	     			return self.currentTurn = "O";
+	     		} else if (self.currentTurn == "O"){
+	     			this.players = "O";
+	     			p2WinCheck();
+	     			if (self.playerTwoWon === false){
+	     			tieCheck();
+	     		}
+	     			return self.currentTurn = "X";
+	     		}
+	     	}
 
-     };
- }
-	     // ******* new game clears tiles ********
+	     }; self.marianottt.$save();
+	 }
+	     // ******* New Game Clears Tiles ********
 	function newGame() {
 		for(var i = 0; i < 9; i++){
 			self.tiles[i].players = '';
 		}
+		 self.marianottt.$save();
 	}
 
 
@@ -83,8 +93,9 @@ function TTTController($firebase) {
 				newGame();
 			 alert("Tie");
 		}
-		return check;
+			return check;
 		//playersTie = true;
+			self.marianottt.$save();
 		}
 
 
@@ -107,6 +118,7 @@ function TTTController($firebase) {
 			
 
 	} 
+	self.marianottt.$save();
 }
 
 	function p2WinCheck() {
@@ -124,6 +136,7 @@ function TTTController($firebase) {
 			newGame();
 
 		} 
+		self.marianottt.$save();
 	}
 
 }

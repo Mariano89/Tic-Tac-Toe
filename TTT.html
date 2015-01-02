@@ -18,29 +18,31 @@
 		
 		<div id="leftSidebar">
 			
-			<h4>{{p1name | limitTo: 20 }} {{ p1name.length > 20 ? "..." : "" }}'s score: {{ ttt.playerOne.wins }}</h4>
+			<h4><p class="names">{{ p1name | limitTo: 20 | uppercase }} {{ p1name.length > 20 ? "..." : "" }}</p> </br> Score: <p>{{ ttt.playerOne.wins }}</p></h4>
 			
 				<input type="text" placeholder="Player 1 name" x-ng-model="p1name">
 			
-			<h4>{{p2name | limitTo: 20 }} {{ p2name.length > 20 ? "..." : "" }}'s score: {{ ttt.playerTwo.wins }} </h4>
+			<h4><p class="names">{{ p2name | limitTo: 20 | uppercase }} {{ p2name.length > 20 ? "..." : "" }}</p> </br> Score: <p>{{ ttt.playerTwo.wins }} </p></h4>
 			
 				<input type="text" placeholder="Player 2 name" x-ng-model="p2name">
 
-			<h4>Ties: {{ttt.players.ties}} </h4>
+			<h4>Ties: <p>{{ ttt.players.ties }} </p></h4>
 		
 		</div>
-		<div id="rightSidebar"></div>
-		
+		<div id="rightSidebar">
+			<!-- <textarea></textarea> -->
+		</div>
+			
 		<!-- Game board and functionality -->
     	
     		<div class="board">
     			<div x-ng-repeat="tile in ttt.tiles">
         			<div class="tiles" x-ng-click="tile.click()">
-        				<h1 class="symbols">{{tile.players}}</h1>
+        				<h1 class="symbols">{{ tile.players }}</h1>
         			</div>
         		</div>
     		</div>   		
-		
-		<!-- <button class="startbtn"><a href x-ng-click="newGame().click()">New Game</a></button> -->
+<!-- 			{{ttt.playerOne.name + " Wins"}}
+ -->		<!-- <button class="startbtn"><a href x-ng-click="newGame().click()">New Game</a></button> -->
 	</body>
 </html>
