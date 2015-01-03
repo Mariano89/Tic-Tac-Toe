@@ -30,14 +30,17 @@
 		
 		</div>
 		<div id="rightSidebar">
-			<!-- <textarea></textarea> -->
+			<!-- <form>
+				<input class="chat" type="text">
+				<button type="submit">send</button>
+			</form> -->
 		</div>
 			
 		<!-- Game board and functionality -->
     	
     		<div class="board">
-    			<div x-ng-repeat="tile in ttt.tiles">
-        			<div class="tiles" x-ng-click="tile.click()">
+    			<div x-ng-repeat="tile in ttt.marianottt.tiles">
+        			<div class="tiles" x-ng-click="ttt.click($index)">
         				<h1 class="symbols">{{ tile.players }}</h1>
         			</div>
         		</div>
