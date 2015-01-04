@@ -42,11 +42,11 @@ function TTTController($firebase) {
     function tile(position) {
     	this.position = position;
     	this.players = '';
-    	this.playerOne = false;
-    	this.playerTwo = false;
+    	// this.playerOne = false;
+    	// this.playerTwo = false;
 	}
 
-			// ********* Click Tiles **********
+			// ************ Click Tiles ******************
 	 
 	self.click = function($index){
 		if (self.marianottt.tiles[$index].players === ''){
@@ -88,8 +88,8 @@ function TTTController($firebase) {
 		} 
 			if (check > 8){
 				self.players.ties++;
-				newGame();
-			 alert("Tie");
+				 alert("Tie");
+				 newGame();
 		}
 			return check;
 		//playersTie = true;
