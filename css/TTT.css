@@ -47,10 +47,6 @@ p {
 	height: 100%;
 }*/
 
-/*.chat {
-
-}*/
-
 .playa {
 	color: black;
 	font-size: 20px;
@@ -59,8 +55,8 @@ p {
 
 .board {
 	margin: 0 auto;
-	width: 600px;
-	height: 600px;
+	width: 501px;
+	/*height: 501px;*/
 	margin-top: 35px;
 }
 

@@ -14,14 +14,11 @@ function TTTController($firebase) {
 	//self.playersTie = false;
 	self.players.ties = 0;
 	self.marianottt = marianottt(); 
-	// self.marianottt.tiles = [];
 
 				// ************** Connection to Firebase ************
 	function marianottt(){
 		var ref = new Firebase('https://marianottt.firebaseio.com/');
-		var mttt = $firebase(ref).$asObject();
-		//console.log(mttt);
-		return mttt;
+		return $firebase(ref).$asObject();
 	}
 
 	self.marianottt.$loaded().then(function() {
@@ -33,7 +30,6 @@ function TTTController($firebase) {
 			self.player = "X";
 			self.marianottt.waitPlayerTwo = true;
 			self.marianottt.currentTurn = "X";
-
 			self.marianottt.tiles = [];
 
 			  	 // *************** Array Constructor **************
@@ -146,7 +142,6 @@ function TTTController($firebase) {
 		} 
 		self.marianottt.$save();
 	}
-
 }
 
 
