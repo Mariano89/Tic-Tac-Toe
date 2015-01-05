@@ -55,7 +55,7 @@ p {
 
 .board {
 	margin: 0 auto;
-	width: 501px;
+	width: 36%;
 	/*height: 501px;*/
 	margin-top: 35px;
 }
@@ -66,8 +66,8 @@ p {
 
 .tiles {
 	border: 1px solid white;
-	height: 165px;
-	width: 165px;
+	height: 32%;
+	width: 32%;
 	float: left;
 	line-height: 200px;
 	background-color: #72AF73;
