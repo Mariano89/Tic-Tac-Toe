@@ -14,29 +14,42 @@
 		<link href="css/TTT.css" rel="stylesheet" type="text/css">
 	</head>
 	<body x-ng-controller="TTTController as ttt">
-		<header><h1>Tic-Tac-Toe</h1></header>
+		
+		<header>
+			<h1>Tic-Tac-Toe</h1>
+		</header>
+		
+		<p class="playa"><strong>You are Player {{ ttt.player }}</strong></p>
 		
 		<div id="leftSidebar">
 			
-			<h4><p class="names">{{ p1name | limitTo: 20 | uppercase }} {{ p1name.length > 20 ? "..." : "" }}</p> </br> Score: <p>{{ ttt.playerOne.wins }}</p></h4>
+			<h4>
+				<p class="names">{{ p1name | limitTo: 20 | uppercase }} {{ p1name.length > 20 ? "..." : "" }}</p> 
+				</br> Score: 
+				<p>{{ ttt.playerOne.wins }}</p>
+			</h4>
 			
 				<input type="text" placeholder="Player 1 name" x-ng-model="p1name">
 			
-			<h4><p class="names">{{ p2name | limitTo: 20 | uppercase }} {{ p2name.length > 20 ? "..." : "" }}</p> </br> Score: <p>{{ ttt.playerTwo.wins }} </p></h4>
+			<h4>
+				<p class="names">{{ p2name | limitTo: 20 | uppercase }} {{ p2name.length > 20 ? "..." : "" }}</p> 
+				</br> Score: 
+				<p>{{ ttt.playerTwo.wins }} </p>
+			</h4>
 			
 				<input type="text" placeholder="Player 2 name" x-ng-model="p2name">
 
 			<h4>Ties: <p>{{ ttt.players.ties }} </p></h4>
-		
+			
 		</div>
+		
 		<div id="rightSidebar">
 			<!-- <form>
 				<input class="chat" type="text">
 				<button type="submit">send</button>
 			</form> -->
 		</div>
-			
-		<!-- Game board and functionality -->
+							<!-- Game board and functionality -->
     	
     		<div class="board">
     			<div x-ng-repeat="tile in ttt.marianottt.tiles">
@@ -46,6 +59,6 @@
         		</div>
     		</div>   		
 <!-- 			{{ttt.playerOne.name + " Wins"}}
- -->		<!-- <button class="startbtn"><a href x-ng-click="newGame().click()">New Game</a></button> -->
+ -->		<!-- <button class="restartbtn" x-ng-click="ttt.newGame()">New Game</button> -->
 	</body>
 </html>

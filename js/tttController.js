@@ -6,16 +6,15 @@ TTTController.$inject = ['$firebase'];
 
 function TTTController($firebase) {
 	var self = this;
-	self.players = [ 'X', 'O' ];
+	self.players = [ "X", "O"];
 	self.playerOneWon = false;
 	self.playerTwoWon = false;
 	self.playerOne = new Player("Playe One");
 	self.playerTwo = new Player("Player Two");
 	//self.playersTie = false;
-	self.currentTurn = "X";
 	self.players.ties = 0;
 	self.marianottt = marianottt(); 
-	self.marianottt.tiles = [];
+	// self.marianottt.tiles = [];
 
 				// ************** Connection to Firebase ************
 	function marianottt(){
@@ -25,51 +24,66 @@ function TTTController($firebase) {
 		return mttt;
 	}
 
+	self.marianottt.$loaded().then(function() {
+		if(self.marianottt.waitPlayerTwo) {
+			self.player = "O";
+			self.marianottt.waitPlayerTwo = false;
+		}
+		else {
+			self.player = "X";
+			self.marianottt.waitPlayerTwo = true;
+			self.marianottt.currentTurn = "X";
+
+			self.marianottt.tiles = [];
+
+			  	 // *************** Array Constructor **************
+
+			(function tilePusher(){
+				for(var i = 0; i < 9; i++){
+					self.marianottt.tiles.push(new tile(i));
+				}	self.marianottt.$save();
+			})();
+
+
+			function tile(position) {
+				this.position = position;
+				this.players = '';
+	    	// this.playerOne = false;
+	    	// this.playerTwo = false;
+	    	}
+
+			}
+			self.marianottt.$save();
+			});
 
 	function Player(name) {
 		this.name = name;
 		this.wins = 0;
 	}
 
-	   		   // ********** Array Constructor **************
-    (function tilePusher(){
-    	for(var i = 0; i < 9; i++){
-    		self.marianottt.tiles.push(new tile(i));
-    	}	self.marianottt.$save();
-    })();
+				// ************** Click Tiles ******************
 
-
-    function tile(position) {
-    	this.position = position;
-    	this.players = '';
-    	// this.playerOne = false;
-    	// this.playerTwo = false;
-	}
-
-			// ************ Click Tiles ******************
-	 
 	self.click = function($index){
-		if (self.marianottt.tiles[$index].players === ''){
-			if(self.currentTurn == "X"){
-				self.marianottt.tiles[$index].players = "X";
-				p1WinCheck();
-				if ( self.playerOneWon === false ){
-					tieCheck();
-				}
-				return self.currentTurn = "O";
-			} else if (self.currentTurn == "O"){
-				self.marianottt.tiles[$index].players = "O";
-				p2WinCheck();
-				if (self.playerTwoWon === false){
-					tieCheck();
-				}
-					return self.currentTurn = "X";
+		if (self.marianottt.tiles[$index].players === '' && self.marianottt.currentTurn === "X" && self.player === "X"){
+			self.marianottt.tiles[$index].players = "X";
+			p1WinCheck();
+			if (self.playerOneWon === false ){
+				tieCheck();
 			}
+			self.marianottt.currentTurn = "O";
+		}
+		else if (self.marianottt.tiles[$index].players === '' && self.marianottt.currentTurn == "O" && self.player === "O"){
+			self.marianottt.tiles[$index].players = "O";
+			p2WinCheck();
+			if (self.playerTwoWon === false){
+				tieCheck();
+			}
+			self.marianottt.currentTurn = "X";
 		}
 		self.marianottt.$save();
-	}
+	};
 
-	     	// ******* New Game Clears Tiles ********
+	     		// *********** New Game Clears Tiles ***********
 	
 	function newGame() {
 		for(var i = 0; i < 9; i++){
@@ -78,7 +92,7 @@ function TTTController($firebase) {
 		 self.marianottt.$save();
 	}
 
-
+				// ************ Checks for tie ***************
 	function tieCheck(){
 		var check = 0;
 		for(i = 0; i < 9; i++){
@@ -97,7 +111,7 @@ function TTTController($firebase) {
 		}
 
 
- 			// ********* Checks for winning possibilities ***************
+ 			// *************** Checks for winning possibilities ***************
 
 	function p1WinCheck() {
 		if((self.marianottt.tiles[0].players == "X" && self.marianottt.tiles[1].players == "X" && self.marianottt.tiles[2].players == "X") ||
@@ -112,12 +126,9 @@ function TTTController($firebase) {
 			self.playerOne.wins++;
 			self.playerOneWon = true;
 			newGame();
-
-			
-
-	} 
-	self.marianottt.$save();
-}
+		} 
+		self.marianottt.$save();
+	}
 
 	function p2WinCheck() {
 		if((self.marianottt.tiles[0].players == "O" && self.marianottt.tiles[1].players == "O" && self.marianottt.tiles[2].players == "O") ||
@@ -132,7 +143,6 @@ function TTTController($firebase) {
 			self.playerTwo.wins++;
 			self.playerTwoWon = true;
 			newGame();
-
 		} 
 		self.marianottt.$save();
 	}
