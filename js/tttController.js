@@ -44,13 +44,12 @@ function TTTController($firebase) {
 			function tile(position) {
 				this.position = position;
 				this.players = '';
-	    	// this.playerOne = false;
-	    	// this.playerTwo = false;
 	    	}
 
 			}
 			self.marianottt.$save();
 			});
+
 
 	function Player(name) {
 		this.name = name;
@@ -68,7 +67,7 @@ function TTTController($firebase) {
 			}
 			self.marianottt.currentTurn = "O";
 		}
-		else if (self.marianottt.tiles[$index].players === '' && self.marianottt.currentTurn == "O" && self.player === "O"){
+		else if (self.marianottt.tiles[$index].players === '' && self.marianottt.currentTurn === "O" && self.player === "O"){
 			self.marianottt.tiles[$index].players = "O";
 			p2WinCheck();
 			if (self.playerTwoWon === false){
