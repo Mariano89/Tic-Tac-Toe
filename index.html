@@ -20,7 +20,8 @@
 		</header>
 		
 		<p class="currentPlayer"><strong>You are Player {{ ttt.player }}</strong></p>
-		
+		  
+		  <!--  ************ LEFT SIDE BAR *********  -->
 		<div id="leftSidebar">
 			
 			<h4>
@@ -43,10 +44,19 @@
 			
 		</div>
 		
+			<!-- ************ CHAT ***************-->
 		<div id="rightSidebar">
-			
+			<section>
+			<form x-ng-submit="ttt.sendChat(ttt.newMessage)">
+					<input class="chat" type="text" x-ng-model="ttt.newMessage.name">
+				</form> 
+			<div ng-repeat="m in ttt.message">
+				<input class="chat" x-ng-model="m.name" x-ng-change="ttt.message.$save(m)">
+			</div>
+				
+			</section>
 		</div>
-							<!-- Game board and functionality -->
+							<!-- ******* GAME BOARD AND FUNCTIONALITY ****** -->
     	
     		<div class="board">
     			<div x-ng-repeat="tile in ttt.marianottt.tiles">
@@ -54,8 +64,7 @@
         				<h1 class="symbols">{{ tile.players }}</h1>
         			</div>
         		</div>
+        		<!-- <button class="restartbtn" x-ng-click="ttt.newGame()">Restart</button> -->
     		</div>   		
-<!-- 			{{ttt.playerOne.name + " Wins"}}
- -->		<!-- <button class="restartbtn" x-ng-click="ttt.newGame()">New Game</button> -->
 	</body>
 </html>

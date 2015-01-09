@@ -13,6 +13,8 @@ function TTTController($firebase) {
 	self.playerTwo = new Player("Player Two");
 	//self.playersTie = false;
 	self.players.ties = 0;
+	self.message = getChat();
+	// self.marianottt.sendChat = sendChat();
 	self.marianottt = marianottt(); 
 
 				// ************** Connection to Firebase ************
@@ -117,9 +119,9 @@ function TTTController($firebase) {
 			(self.marianottt.tiles[2].players == "X" && self.marianottt.tiles[5].players == "X" && self.marianottt.tiles[8].players == "X") ||
 			(self.marianottt.tiles[0].players == "X" && self.marianottt.tiles[4].players == "X" && self.marianottt.tiles[8].players == "X") ||
 			(self.marianottt.tiles[2].players == "X" && self.marianottt.tiles[4].players == "X" && self.marianottt.tiles[6].players == "X")) {
-			alert(self.playerOne.name + " Wins");
 			self.playerOne.wins++;
 			self.playerOneWon = true;
+			self.message = self.playerOne.name + " Wins";
 			newGame();
 		} 
 		self.marianottt.$save();
@@ -141,6 +143,19 @@ function TTTController($firebase) {
 		} 
 		self.marianottt.$save();
 	}
+
+	function getChat() {
+		var ref = new Firebase("https://marianottt.firebaseio.com/chat/");
+		return $firebase(ref).$asArray();
+	}
+
+	this.sendChat = function(conversation){
+		console.log(conversation);
+		// var sender = '';
+		self.message.$add(conversation);
+		self.newMessage = null;
+	};
+	self.marianottt.$save();
 }
 
 
