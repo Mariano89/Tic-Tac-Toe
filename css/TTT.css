@@ -32,16 +32,12 @@ p {
 
 
 #leftSidebar {
-/*	float: left;
-	width: 250px;
-	height: 560px;
-	border-right: 1px solid white;*/
 	width: 200px;
 	height: 250px;
 	background-color: #72AF73;
 	/*opacity: 0.7;*/
 	border-radius: 5px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 #rightSidebar {
