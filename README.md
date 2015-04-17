@@ -1,4 +1,7 @@
 WDI Project #1
 
 
-[Tic TacToe](https://marianottt.firebaseapp.com/)
+
+[Tic Tac Toe](https://marianottt.firebaseapp.com/) with Angular and Firebase
+
+
