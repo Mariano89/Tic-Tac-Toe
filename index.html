@@ -28,22 +28,26 @@
 		<div id="leftSidebar" class="col-md-3">
 			
 			<h4>
+				<p class="players">Player X</p>
+				<br>
 				<p class="names">{{ p1name | limitTo: 20 | uppercase }} {{ p1name.length > 20 ? "..." : "" }}</p> 
-				</br> Score: 
-				<p>{{ ttt.playerOne.wins }}</p>
+				<br> Score: 
+				<p class="score">{{ ttt.playerOne.wins }}</p>
 			</h4>
 			
 				<input type="text" placeholder="Player 1 name" x-ng-model="p1name">
 			
 			<h4>
+				<p class="players">Player O</p>
+				<br>
 				<p class="names">{{ p2name | limitTo: 20 | uppercase }} {{ p2name.length > 20 ? "..." : "" }}</p> 
-				</br> Score: 
-				<p>{{ ttt.playerTwo.wins }} </p>
+				<br> Score: 
+				<p class="score">{{ ttt.playerTwo.wins }} </p>
 			</h4>
 			
 				<input type="text" placeholder="Player 2 name" x-ng-model="p2name">
 
-			<h4>Ties: <p>{{ ttt.players.ties }} </p></h4>
+			<h4>Ties: <p class="score">{{ ttt.players.ties }} </p></h4>
 			
 		</div>
 		
