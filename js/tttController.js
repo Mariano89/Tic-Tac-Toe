@@ -101,6 +101,7 @@ function TTTController($firebase) {
 				self.players.ties++;
 				 alert("Tie");
 				 newGame();
+				 // getChat() = [];
 		}
 			return check;
 		//playersTie = true;
@@ -119,6 +120,7 @@ function TTTController($firebase) {
 			(self.marianottt.tiles[2].players == "X" && self.marianottt.tiles[5].players == "X" && self.marianottt.tiles[8].players == "X") ||
 			(self.marianottt.tiles[0].players == "X" && self.marianottt.tiles[4].players == "X" && self.marianottt.tiles[8].players == "X") ||
 			(self.marianottt.tiles[2].players == "X" && self.marianottt.tiles[4].players == "X" && self.marianottt.tiles[6].players == "X")) {
+			alert(self.playerOne.name + " Wins");
 			self.playerOne.wins++;
 			self.playerOneWon = true;
 			self.message = self.playerOne.name + " Wins";
@@ -154,9 +156,11 @@ function TTTController($firebase) {
 		// var sender = '';
 		self.message.$add(conversation);
 		self.newMessage = null;
+			// self.marianottt.$save();
 	};
-	self.marianottt.$save();
-}
+
+
+	}
 
 
 

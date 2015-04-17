@@ -2,13 +2,14 @@ body {
 	background-color: #bdc3c7;
 }
 
-header {
-	border-bottom: 1px solid white;
+.navbar {
+	border-radius: 0px !important;
 }
 
 h1 {
 	text-align: center;
-	color: #3C7B56;
+	/*color: #3C7B56;*/
+	color: white !important;
 }
 
 p {
@@ -35,16 +36,13 @@ p {
 	width: 250px;
 	height: 560px;
 	border-right: 1px solid white;
-	/*border-bottom: 1px solid white;*/
-	/*height: 100%;*/
 }
 
 #rightSidebar {
 	float: right;
 	width: 250px;
-	min-height: 400px;
+	height: 560px;
 	border-left: 1px solid white;
-	height: 100%;
 }
 
 .chat {
