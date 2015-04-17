@@ -22,10 +22,10 @@
 			<h1>Tic-Tac-Toe</h1>
 		</nav>
 		
-		<p class="currentPlayer"><strong>Player {{ ttt.player }} turn</strong></p>
+		<p class="currentPlayer col-md-12 text-center"><strong>Player {{ ttt.player }}</strong></p>
 		  
 		  <!--  ************ LEFT SIDE BAR *********  -->
-		<div id="leftSidebar">
+		<div id="leftSidebar" class="col-md-3">
 			
 			<h4>
 				<p class="names">{{ p1name | limitTo: 20 | uppercase }} {{ p1name.length > 20 ? "..." : "" }}</p> 
@@ -60,14 +60,17 @@
 			</section>
 		</div>
 							<!-- ******* GAME BOARD AND FUNCTIONALITY ****** -->
-    	
+    	<!-- <div class="col-md-6"> -->
     		<div class="board">
     			<div x-ng-repeat="tile in ttt.marianottt.tiles">
         			<div class="tiles" x-ng-click="ttt.click($index)">
         				<h1 class="symbols">{{ tile.players }}</h1>
         			</div>
-        		</div>
-        		<div ng-show="gameEnd" <a x-ng-click="ttt.newGame()" href="#">Restart</button>
-    		</div>   		
+        	</div>
+      	 </div>
+      <!-- </div> -->
+
+     <!--    <div ng-show="gameEnd"><a x-ng-click="ttt.newGame()" href="#"	Restart</a>
+    		</div>    -->		
 	</body>
 </html>

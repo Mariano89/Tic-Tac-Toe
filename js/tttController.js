@@ -34,7 +34,7 @@ function TTTController($firebase) {
 			self.marianottt.currentTurn = "X";
 			self.marianottt.tiles = [];
 
-			  	 // *************** Array Constructor **************
+			  	 // ********** Array Constructor ***********
 
 			(function tilePusher(){
 				for(var i = 0; i < 9; i++){
