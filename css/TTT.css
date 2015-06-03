@@ -57,6 +57,7 @@ p {
 	height: 500px;
 	margin-right: 20px;
 	background-color: white;
+	overflow-y: scroll;
 }
 
 .chatInput {
