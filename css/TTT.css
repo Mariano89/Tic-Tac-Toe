@@ -54,10 +54,11 @@ p {
 
 .chatDisplay {
 	width: 400px;
-	height: 500px;
+	height: 466px;
+	padding: 13px 8px 0 8px;
 	margin-right: 20px;
 	background-color: white;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .chatInput {

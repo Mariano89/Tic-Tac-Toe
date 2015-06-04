@@ -16,6 +16,7 @@ $(document).ready(function(){
 		$('.chatInput').val('');
 		$('.sendMessage').prop('disabled', true);
 	});
+	
 });
 
 // function chatty(){
