@@ -156,7 +156,7 @@ function TTTController($firebase) {
 		// var sender = '';
 		self.message.$add(conversation);
 		self.newMessage = null;
-			// self.marianottt.$save();
+			self.marianottt.$save();
 	};
 
 
